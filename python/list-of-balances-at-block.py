@@ -17,7 +17,7 @@ def get_balance_change_for(utxo, height):
 
 def get_balance_for_utxo_at_block(utxo, block):
     heights = sorted(int(height) for height in get_blocks_referencing_utxo(utxo))
-    changes = [get_balance_change_for(utxo, height) for height in heights]
+    changes = [get_balance_change_for(utxo, height) for height in heights if height <= block]
     return sum(changes)
 
 def gen_snapshot(blockheight, outputfile):
