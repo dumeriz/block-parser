@@ -99,8 +99,7 @@ std::endl;
 }
 */
 
-std::string
-str_tolower(std::string s)
+std::string str_tolower(std::string s)
 {
     std::transform(s.begin(), s.end(), s.begin(), [](unsigned char c) { return std::tolower(c); } // correct
     );
@@ -109,8 +108,7 @@ str_tolower(std::string s)
 
 // naive way to enumerate the available blockdata files in directory where:
 // try opening sequentially until that fails.
-auto
-enumerate_blockfiles(std::string where)
+auto enumerate_blockfiles(std::string where)
 {
     std::ifstream file{where + "/blk00000.dat"};
     size_t i{};
@@ -125,8 +123,7 @@ enumerate_blockfiles(std::string where)
     return i - 1;
 }
 
-int
-main(int argc, char** argv)
+int main(int argc, char** argv)
 {
     // Not all of these scripts might work with the current iteration of the code.
     // redis::load_script("redis-scripts/getallutxos.lua");

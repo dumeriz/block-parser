@@ -6,14 +6,12 @@
 #include <util.hpp>
 #include <znn_constants.hpp>
 
-inline bool
-is_coin_stake(blockparser::Transaction const& tx)
+inline bool is_coin_stake(blockparser::Transaction const& tx)
 {
     return !tx.vin.empty() && claims_output(tx.vin[0]) && tx.vout.size() > 1 && empty(tx.vout[0]);
 }
 
-blockparser::Block
-blockparser::read_block(std::ifstream& stream, uint32_t block_size, size_t block_height)
+blockparser::Block blockparser::read_block(std::ifstream& stream, uint32_t block_size, size_t block_height)
 {
     auto const block_offset{stream.tellg()};
 

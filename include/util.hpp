@@ -6,8 +6,7 @@
 
 #include <iostream>
 
-inline std::ostream&
-operator<<(std::ostream& os, uint256 const& value)
+inline std::ostream& operator<<(std::ostream& os, uint256 const& value)
 {
     os << value.GetHex();
     return os;

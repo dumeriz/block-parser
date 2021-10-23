@@ -3,8 +3,7 @@
 #include "util.hpp"
 #include "znn_constants.hpp"
 
-blockparser::TxInput
-blockparser::read_tx_input(std::ifstream& stream)
+blockparser::TxInput blockparser::read_tx_input(std::ifstream& stream)
 {
     // Serialized TX Inputs consist of (in that order):
     // - a COutPoint (a tx hash and an index, locating the claimed tx-out)

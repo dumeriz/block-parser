@@ -3,8 +3,7 @@
 #include <zenon/hash.h>
 #include <znn_constants.hpp>
 
-blockparser::Header
-blockparser::read_header(std::ifstream& stream)
+blockparser::Header blockparser::read_header(std::ifstream& stream)
 {
     Header header;
 
@@ -22,8 +21,7 @@ blockparser::read_header(std::ifstream& stream)
 // utilstrencodings.h:
 #define END(a) ((char const*)&((&(a))[1]))
 
-uint256
-blockparser::hash(blockparser::Header const& header)
+uint256 blockparser::hash(blockparser::Header const& header)
 {
     auto const begin{reinterpret_cast<char const*>(&header.version_)};
 

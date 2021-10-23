@@ -3,8 +3,7 @@
 #include "util.hpp"
 #include "znn_constants.hpp"
 
-blockparser::TxOutput
-blockparser::read_tx_output(std::ifstream& stream)
+blockparser::TxOutput blockparser::read_tx_output(std::ifstream& stream)
 {
     TxOutput output;
 

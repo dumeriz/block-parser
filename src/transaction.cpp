@@ -6,16 +6,14 @@
 #include <util.hpp>
 #include <zenon/hash.h>
 
-void
-check_for_coinbase(blockparser::TxInput const& input)
+void check_for_coinbase(blockparser::TxInput const& input)
 {
     assert(input.tx_hash == 0x0);      // no previous outpoint
     assert(input.index == 0xffffffff); // no previous outpoint
 }
 
 /// Validates that the interpretation of transaction types is correct
-auto
-assert_schema_matches_assumption(blockparser::Transaction const& tx)
+auto assert_schema_matches_assumption(blockparser::Transaction const& tx)
 {
     static int current_phase = 0; // pow
     static bool seen_regular_tx{};
@@ -70,8 +68,7 @@ assert_schema_matches_assumption(blockparser::Transaction const& tx)
     }
 }
 
-blockparser::Transaction
-blockparser::read_transaction(std::ifstream& stream)
+blockparser::Transaction blockparser::read_transaction(std::ifstream& stream)
 {
     // Remember the stream position, because we need to roll back after extraction of
     // the tx contents, to pass the serialized tx to the hasher.
