@@ -1,0 +1,27 @@
+# meson
+build
+debug
+rel
+release
+debug-opt
+
+# macOS
+.DS_Store
+
+# xcode
+xcuserdata/
+
+# read data files
+blk*.dat
+
+# emacs
+*~
+
+# vim
+\.*\.swp
+
+# cpp-redis sources to build on macos
+external/cpp_redis
+
+# snapshot file
+snapshot.txt
