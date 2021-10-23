@@ -213,9 +213,9 @@ int main(int argc, char** argv)
     assert(last_block->follower().IsNull());
 
     // set the actual block height now
-    last_block->set_height(count + 1);
+    last_block->set_height(count);
 
-    size_t height{1};
+    size_t height{};
     for (auto* block{genesis}; !block->follower().IsNull(); block = blocks[block->follower()].get())
     {
         block->set_height(height++);
@@ -251,8 +251,8 @@ int main(int argc, char** argv)
     assert(last_block->follower().IsNull());
 
     // validation: Iterating through the chain now by following the follewer-links, we should have
-    // a height-sequence of increments by one. Initial height must be 0, top height must be height-1 (see above).
-    size_t control_height{1};
+    // a height-sequence of increments by one. Initial height must be 0.
+    size_t control_height{0};
     for (auto hash{blockparser::hash(genesis->header())}; !hash.IsNull(); hash = blocks[hash]->follower())
     {
         auto actual_height{blocks[hash]->height()};

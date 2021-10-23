@@ -130,11 +130,11 @@ namespace redis
 
     void store_block(blockparser::BlockPtr const& block, std::string const& hash)
     {
-        static size_t running_height{1}; // Just used for validation
+        static size_t control_height{0}; // Just used for validation
 
-        if (block->height() != running_height++)
+        if (block->height() != control_height++)
         {
-            throw blockparser::RedisException{"Expected block " + std::to_string(running_height - 1) + ", got " +
+            throw blockparser::RedisException{"Expected block " + std::to_string(control_height - 1) + ", got " +
                                               std::to_string(block->height())};
         }
 
