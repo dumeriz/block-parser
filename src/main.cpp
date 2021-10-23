@@ -107,6 +107,24 @@ str_tolower(std::string s)
     return s;
 }
 
+// naive way to enumerate the available blockdata files in directory where:
+// try opening sequentially until that fails.
+auto
+enumerate_blockfiles(std::string where)
+{
+    std::ifstream file{where + "/blk00000.dat"};
+    size_t i{};
+    for (; file.good(); i++)
+    {
+        auto const num{std::string{"000"} + ((i + 1) < 10 ? "0" : "") + std::to_string(i + 1)};
+        auto const filename{where + "/blk" + num + ".dat"};
+        file = std::ifstream{filename};
+    }
+
+    assert(i > 0); // else not even blk00000.dat was readable
+    return i - 1;
+}
+
 int
 main(int argc, char** argv)
 {
@@ -151,8 +169,7 @@ main(int argc, char** argv)
     blockparser::Block* genesis{nullptr};    // first block
     blockparser::Block* last_block{nullptr}; // for reverse iteration to build the linked list
 
-    size_t blockfile_max{16};
-    for (size_t i{}; i < blockfile_max; ++i)
+    for (size_t i{}; i <= enumerate_blockfiles(blocksdir + "/blocks"); ++i)
     {
         try
         {
