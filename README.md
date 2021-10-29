@@ -1,3 +1,6 @@
+**Note**
+If all you want is a snapshot of utxo balances for a certain blockheight, consider switching to the snapshot-without-db branch.
+
 # Blockparser
 
 This is a tool to read the blockfiles from Zenon Network's *legacy* blockchain. In its current iteration, it is mainly used to generate a snapshot of the UTXO set at any given blockheight.
